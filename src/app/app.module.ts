@@ -8,6 +8,7 @@ import { ArticlePageComponent } from './user/article-page/article-page.component
 import { CreatePageComponent } from './user/create-page/create-page.component';
 import { FavoritePageComponent } from './user/favorite-page/favorite-page.component';
 import { MainPageComponent } from './user/main-page/main-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MainPageComponent } from './user/main-page/main-page.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
