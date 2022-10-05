@@ -35,6 +35,14 @@
     <mat-error *ngIf="formEditor.get('img')?.errors?.['required']">
       <p><strong>ОБЯЗАТЕЛЬНО</strong> добавь фотку</p>
     </mat-error>
-    <button class="form__btn" type="submit" mat-raised-button color="primary">Создать</button>
+    <button
+      class="form__btn"
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="formEditor.invalid"
+    >
+      Создать
+    </button>
   </form>
 </section>

@@ -15,6 +15,6 @@ export class MainLayoutComponent implements OnInit {
   }
 
   getArticls(){
-    console.log(this.api.articls);
+    // console.log(this.api.articls);
   }
 }

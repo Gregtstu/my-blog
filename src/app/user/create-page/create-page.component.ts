@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AngularEditorConfig} from '@kolkov/angular-editor';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ApiService} from "../../settings/services/api.service";
+import {IPosts} from "../../settings/interfaces/iposts";
 
 @Component({
   selector: 'app-create-page',
@@ -104,7 +106,7 @@ export class CreatePageComponent implements OnInit {
   };
 
   public formEditor!:FormGroup;
-  constructor(private formBuilder:FormBuilder) {
+  constructor(private formBuilder:FormBuilder, private api:ApiService) {
   }
 
   ngOnInit(): void {
@@ -117,6 +119,27 @@ export class CreatePageComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.formEditor.value)
+    if (this.formEditor.invalid) {
+      return;
+    }
+    const post:IPosts = {
+      select: this.formEditor.value.select,
+      title: this.formEditor.value.title,
+      foto: this.formEditor.value.foto,
+      content: this.formEditor.value.content,
+      img: this.formEditor.value.img,
+      favorite: false,
+      data: new Date(),
+    }
+
+    this.api.addPost(post).subscribe({
+      next: (res)=> {
+        this.formEditor.reset();
+        alert('Ваш пост успешно опубликован на главной странице!');
+      },
+      error: (err)=> {
+        alert('ОШИБКА!!! Пост не опубликован!!!');
+      }
+    })
   }
 }
