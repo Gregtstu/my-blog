@@ -1,1 +1,26 @@
-<p>create-page works!</p>
+<section class="addPost">
+  <form class="addPost__form form">
+      <h3>Выбери вид поста:</h3>
+    <mat-form-field appearance="outline">
+      <mat-label>Вид поста</mat-label>
+      <mat-select>
+        <mat-option value="electronics">Электроника</mat-option>
+        <mat-option value="sports">Спорт</mat-option>
+      </mat-select>
+    </mat-form-field>
+      <h3>Придумай заголовок поста:</h3>
+    <mat-form-field appearance="outline">
+      <mat-label>Заголовок</mat-label>
+      <input matInput>
+    </mat-form-field>
+    <div class="form__editor">
+      <h3>Внеси текстовый контент поста:</h3>
+      <angular-editor [placeholder]="'Enter text here...'" [config]="config"></angular-editor>
+    </div>
+    <div class="form__editor">
+      <h3>Добавь фотографию:</h3>
+      <angular-editor [placeholder]="'Enter text here...'" [config]="config2"></angular-editor>
+    </div>
+    <button class="form__btn" type="submit" mat-raised-button color="primary">Создать</button>
+  </form>
+</section>
