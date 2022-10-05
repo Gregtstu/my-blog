@@ -4,8 +4,8 @@
     <mat-form-field appearance="outline">
       <mat-label>Вид поста</mat-label>
       <mat-select formControlName="select">
-        <mat-option value="electronics">Электроника</mat-option>
-        <mat-option value="sports">Спорт</mat-option>
+        <mat-option value="Электроника">Электроника</mat-option>
+        <mat-option value="Спорт">Спорт</mat-option>
       </mat-select>
     </mat-form-field>
       <mat-error *ngIf="formEditor.get('select')?.errors?.['required']">
@@ -18,6 +18,14 @@
     </mat-form-field>
     <mat-error *ngIf="formEditor.get('title')?.errors?.['required']">
       <p><strong>ОБЯЗАТЕЛЬНО</strong> придумай заголовок для поста</p>
+    </mat-error>
+    <h3>Придумай краткое описание поста:</h3>
+    <mat-form-field appearance="outline">
+      <mat-label>Описание</mat-label>
+      <input matInput formControlName="description">
+    </mat-form-field>
+    <mat-error *ngIf="formEditor.get('description')?.errors?.['required']">
+      <p><strong>ОБЯЗАТЕЛЬНО</strong> придумай краткое описание для поста</p>
     </mat-error>
     <div class="form__editor">
       <h3>Внеси текстовый контент поста:</h3>

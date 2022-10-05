@@ -113,6 +113,7 @@ export class CreatePageComponent implements OnInit {
     this.formEditor = this.formBuilder.group({
       select: ['', Validators.required],
       title: ['', Validators.required],
+      description: ['', Validators.required],
       content: ['', Validators.required],
       img: ['', Validators.required],
     });
