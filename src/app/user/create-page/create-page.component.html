@@ -1,26 +1,40 @@
 <section class="addPost">
-  <form class="addPost__form form">
+  <form class="addPost__form form" [formGroup]="formEditor" (ngSubmit)="submit()">
       <h3>Выбери вид поста:</h3>
     <mat-form-field appearance="outline">
       <mat-label>Вид поста</mat-label>
-      <mat-select>
+      <mat-select formControlName="select">
         <mat-option value="electronics">Электроника</mat-option>
         <mat-option value="sports">Спорт</mat-option>
       </mat-select>
     </mat-form-field>
+      <mat-error *ngIf="formEditor.get('select')?.errors?.['required']">
+        <p><strong>ОБЯЗАТЕЛЬНО</strong> выбери выд поста</p>
+      </mat-error>
       <h3>Придумай заголовок поста:</h3>
     <mat-form-field appearance="outline">
       <mat-label>Заголовок</mat-label>
-      <input matInput>
+      <input matInput formControlName="title">
     </mat-form-field>
+    <mat-error *ngIf="formEditor.get('title')?.errors?.['required']">
+      <p><strong>ОБЯЗАТЕЛЬНО</strong> придумай заголовок для поста</p>
+    </mat-error>
     <div class="form__editor">
       <h3>Внеси текстовый контент поста:</h3>
-      <angular-editor [placeholder]="'Enter text here...'" [config]="config"></angular-editor>
+      <angular-editor  [config]="config" formControlName="content">
+      </angular-editor>
     </div>
+    <mat-error *ngIf="formEditor.get('content')?.errors?.['required']">
+      <p><strong>ОБЯЗАТЕЛЬНО</strong> добавь текст в свой пост</p>
+    </mat-error>
     <div class="form__editor">
       <h3>Добавь фотографию:</h3>
-      <angular-editor [placeholder]="'Enter text here...'" [config]="config2"></angular-editor>
+      <angular-editor [config]="config2" formControlName="img">
+      </angular-editor>
     </div>
+    <mat-error *ngIf="formEditor.get('img')?.errors?.['required']">
+      <p><strong>ОБЯЗАТЕЛЬНО</strong> добавь фотку</p>
+    </mat-error>
     <button class="form__btn" type="submit" mat-raised-button color="primary">Создать</button>
   </form>
 </section>

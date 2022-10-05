@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AngularEditorConfig} from '@kolkov/angular-editor';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-create-page',
@@ -12,7 +13,7 @@ export class CreatePageComponent implements OnInit {
     spellcheck: true,
     height: '15rem',
     minHeight: '5rem',
-    placeholder: 'Enter text here...',
+    placeholder: 'Поле основного контента',
     translate: 'no',
     defaultParagraphSeparator: 'p',
     defaultFontName: 'Times New Roman',
@@ -60,7 +61,7 @@ export class CreatePageComponent implements OnInit {
     spellcheck: true,
     height: '15rem',
     minHeight: '5rem',
-    placeholder: 'Enter text here...',
+    placeholder: 'Поле для фото',
     translate: 'no',
     defaultParagraphSeparator: 'p',
     defaultFontName: 'Times New Roman',
@@ -102,10 +103,20 @@ export class CreatePageComponent implements OnInit {
 
   };
 
-  constructor() {
+  public formEditor!:FormGroup;
+  constructor(private formBuilder:FormBuilder) {
   }
 
   ngOnInit(): void {
+    this.formEditor = this.formBuilder.group({
+      select: ['', Validators.required],
+      title: ['', Validators.required],
+      content: ['', Validators.required],
+      img: ['', Validators.required],
+    });
   }
 
+  submit() {
+    console.log(this.formEditor.value)
+  }
 }
